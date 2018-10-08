@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper">
+
+	<select parameterType="map" id="consultarItemRentado" resultMap="ItemRentadoResult>
+		select ir.id as idir,
+				ir.fechainiciorenta,
+				ir.fechafinrenta
+		from VI_ITEMRENTADO as ir 
+		where ir.ITEM_id = #{idi};
+	</select>
+
+	<resultMap type='ItemRentado' id='ItemRentadoResult'>
+		<id property='id' column='idir'/>		
+		<result property='fechainiciorenta' column='fechainiciorenta'/>
+		<result property='fechafinrenta' column='fechafinrenta'/>   
+		<association property='item' resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult'/>
+	</resultMap>
+	
+</mapper>
