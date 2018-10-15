@@ -12,22 +12,22 @@ import java.util.ArrayList;
  *
  * @author 2106913
  */
-public class Cliente implements Serializable{
-    
-	private static final long serialVersionUID = 1L;
-	
-	private String nombre;
+public class Cliente implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String nombre;
     private long documento;
     private String telefono;
     private String direccion;
     private String email;
     private boolean vetado;
-    private ArrayList<ItemRentado> rentados; 
+    private ArrayList<ItemRentado> rentados;
 
     public Cliente() {
     }
 
-    public Cliente(String nombre, long documento, String telefono, String direccion, String email, boolean vetado, ArrayList<ItemRentado> rentados) {   
+    public Cliente(String nombre, long documento, String telefono, String direccion, String email, boolean vetado, ArrayList<ItemRentado> rentados) {
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
@@ -36,7 +36,7 @@ public class Cliente implements Serializable{
         this.vetado = vetado;
         this.rentados = rentados;
     }
-  
+
     public Cliente(String nombre, long documento, String telefono, String direccion, String email) {
         this.nombre = nombre;
         this.documento = documento;
@@ -46,7 +46,7 @@ public class Cliente implements Serializable{
         this.vetado = false;
         this.rentados = new ArrayList<>();
     }
-           
+
     public String getNombre() {
         return nombre;
     }
