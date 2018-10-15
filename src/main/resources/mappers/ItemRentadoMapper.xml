@@ -5,14 +5,14 @@
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemRentadoMapper">
 
-	<select parameterType="map" id="consultarItemRentado" resultMap="ItemRentadoResult>
+	<select parameterType="map" id="consultarItemRentado" resultMap="ItemRentadoResult">
 		select ir.id as idir,
 				ir.fechainiciorenta,
 				ir.fechafinrenta
 		from VI_ITEMRENTADO as ir 
-		where ir.ITEM_id = #{idi};
+		where ir.ITEMS_id = #{idi}
 	</select>
-
+	
 	<resultMap type='ItemRentado' id='ItemRentadoResult'>
 		<id property='id' column='idir'/>		
 		<result property='fechainiciorenta' column='fechainiciorenta'/>

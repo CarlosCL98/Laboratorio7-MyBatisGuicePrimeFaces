@@ -4,12 +4,15 @@ import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.ItemRentado;
 import edu.eci.pdsw.samples.entities.TipoItem;
-import java.sql.Date;
+
 import java.util.List;
+import java.util.Date;
 
 public interface ServiciosAlquiler {
-
-   public abstract int valorMultaRetrasoxDia(int itemId);
+	
+   public abstract int valorTarifaAlquilerxDia(int itemId);
+   
+   public abstract int valorMultaRetrasoxDia(int itemId) throws ExcepcionServiciosAlquiler;
 
    public abstract Cliente consultarCliente(long docu) throws ExcepcionServiciosAlquiler;
 

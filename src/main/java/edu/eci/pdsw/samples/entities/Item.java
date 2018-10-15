@@ -44,7 +44,6 @@ public class Item implements Serializable{
     }
 
     public void setTipo(TipoItem tipo) {
-    	System.out.println(tipo.getDescripcion());
         this.tipo = tipo;
     }
 

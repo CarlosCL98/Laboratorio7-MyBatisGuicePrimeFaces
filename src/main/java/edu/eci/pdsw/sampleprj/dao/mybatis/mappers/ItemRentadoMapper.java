@@ -8,6 +8,6 @@ public interface ItemRentadoMapper {
 
 	public ItemRentado consultarItemRentado(@Param("idi") int idi);
 	
-	public void insertarItemRentado(@Param("itemRentado") ItemRentado ir);
+	//public void insertarItemRentado(@Param("itemRentado") ItemRentado ir, @Param("idcli") long idcli);
 
 }
