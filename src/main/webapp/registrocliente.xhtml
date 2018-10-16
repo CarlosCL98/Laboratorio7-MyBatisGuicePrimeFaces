@@ -1,11 +1,55 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Facelet Title</title>
-    </head>
-    <body>
-        Hello from Facelets
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <h1>Clientes</h1>
+        <h:form id="clientsForm">
+            <p:panel id="registrar_Tabla" header="Registrar cliente" visible="true">
+                nombre
+                <p:inputText id ="nombreIngresado" binding="#{nombreIngresado}"></p:inputText>
+                documento
+                <p:inputText id ="documentoIngresado" binding="#{documentoIngresado}"></p:inputText>
+                direccion
+                <p:inputText id ="direccionIngresada" binding="#{direccionIgresada}"></p:inputText>
+                telefono
+                <p:inputText id ="telefonoIngresado" binding="#{telefonoIngresado}"></p:inputText>
+                email
+                <p:inputText id ="emailIngresado" binding="#{emailIngresado}"></p:inputText>
+                <p:commandButton id="registrar" update="clientsForm" value="Registrar" actionListener="#{clientesBean.registrarCliente(nombreIngresado.value,documentoIngresado.value,direccionIngresada.value,telefonoIngresado.value,emailIngresado.value)}"></p:commandButton>
+            </p:panel>
+            
+            <p:dataTable id="clients_table" var="client" value="#{clientesBean.getClientes()}">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{client.nombre}" />
+                </p:column>
+                <p:column headerText="Documento">
+                    <h:outputText value="#{client.documento}" />
+                </p:column>
+                <p:column headerText="Direccion">
+                    <h:outputText value="#{client.direccion}" />
+                </p:column>
+                <p:column headerText="Telefono">
+                    <h:outputText value="#{client.telefono}" />
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{client.email}" />
+                </p:column>
+                <p:column headerText="Vetado">
+                    <h:outputText value="#{client.vetado}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <br></br>
+        <br></br>        
+    </h:body>
 </html>
+
+
 
