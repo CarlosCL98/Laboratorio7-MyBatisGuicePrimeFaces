@@ -50,6 +50,10 @@ public interface ServiciosAlquiler {
    public abstract TipoItem consultarTipoItem(int id) throws ExcepcionServiciosAlquiler;
 
    public abstract List<TipoItem> consultarTiposItem() throws ExcepcionServiciosAlquiler;
+   
+   public abstract List<Item> consultarItemsNoRegresados(long documento) throws ExcepcionServiciosAlquiler;
+   
+   public abstract ItemRentado consultarItemRentado(int id) throws ExcepcionServiciosAlquiler;
 
    /**
    * @obj rejistrar el alkiler de un item

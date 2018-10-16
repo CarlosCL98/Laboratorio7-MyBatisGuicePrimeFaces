@@ -6,66 +6,81 @@
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper">
 
     <insert parameterType="map" id="insertarItem">
-    	INSERT INTO VI_ITEMS (id,nombre,descripcion, fechalanzamiento, tarifaxdia, formatorenta, genero, TIPOITEM_id)
-    	VALUES(#{item.id},#{item.nombre},#{item.descripcion},#{item.fechaLanzamiento},#{item.tarifaxDia},#{item.formatoRenta},#{item.genero},#{item.tipo.id})
+        INSERT INTO VI_ITEMS (id,nombre,descripcion, fechalanzamiento, tarifaxdia, formatorenta, genero, TIPOITEM_id)
+        VALUES(#{item.id},#{item.nombre},#{item.descripcion},#{item.fechaLanzamiento},#{item.tarifaxDia},#{item.formatoRenta},#{item.genero},#{item.tipo.id})
     </insert>
     
     <select parameterType="map" id="consultarItems" resultMap="ItemResult">
-    	SELECT i.id as idi ,
-				i.nombre as nombrei ,
-				i.descripcion as desci ,
-				i.fechalanzamiento ,
-				i.tarifaxdia ,
-				i.formatorenta ,
-				i.genero,
-				ti.id as idti,
-				ti.descripcion as descti
-		FROM VI_ITEMS as i left join VI_TIPOITEM ti ON i.TIPOITEM_id=ti.id
+        SELECT i.id as idi ,
+        i.nombre as nombrei ,
+        i.descripcion as desci ,
+        i.fechalanzamiento ,
+        i.tarifaxdia ,
+        i.formatorenta ,
+        i.genero,
+        ti.id as idti,
+        ti.descripcion as descti
+        FROM VI_ITEMS as i left join VI_TIPOITEM ti ON i.TIPOITEM_id=ti.id
     </select>
     
     <select parameterType="map" id="consultarItem" resultMap="ItemResult">
-    	SELECT i.id as idi ,
-				i.nombre as nombrei ,
-				i.descripcion as desci ,
-				i.fechalanzamiento ,
-				i.tarifaxdia ,
-				i.formatorenta ,
-				i.genero ,
-				ti.id as idti ,
-				ti.descripcion as descti
-		FROM VI_ITEMS as i LEFT JOIN VI_TIPOITEM ti ON i.TIPOITEM_id=ti.id
-		WHERE i.id = #{idit}
+        SELECT i.id as idi ,
+        i.nombre as nombrei ,
+        i.descripcion as desci ,
+        i.fechalanzamiento ,
+        i.tarifaxdia ,
+        i.formatorenta ,
+        i.genero ,
+        ti.id as idti ,
+        ti.descripcion as descti
+        FROM VI_ITEMS as i LEFT JOIN VI_TIPOITEM ti ON i.TIPOITEM_id=ti.id
+        WHERE i.id = #{idit}
     </select>
     
     <select parameterType="map" id="consultarItemsDisponibles" resultMap="ItemResult">
-		SELECT i.id as idi ,
-				i.nombre as nombrei ,
-				i.descripcion as desci ,
-				i.fechalanzamiento ,
-				i.tarifaxdia ,
-				i.formatorenta ,
-				i.genero ,
-				ti.id as idti ,
-				ti.descripcion as descti
-		FROM VI_ITEMS as i LEFT JOIN VI_TIPOITEM ti ON i.TIPOITEM_id=ti.id
-		WHERE i.id NOT IN(SELECT ITEMS_id FROM VI_ITEMRENTADO)
+        SELECT i.id as idi ,
+        i.nombre as nombrei ,
+        i.descripcion as desci ,
+        i.fechalanzamiento ,
+        i.tarifaxdia ,
+        i.formatorenta ,
+        i.genero ,
+        ti.id as idti ,
+        ti.descripcion as descti
+        FROM VI_ITEMS as i LEFT JOIN VI_TIPOITEM ti ON i.TIPOITEM_id=ti.id
+        WHERE i.id NOT IN(SELECT ITEMS_id FROM VI_ITEMRENTADO)
+    </select>
+    
+    <select parameterType="map" id="consultarItemsNoRegresados" resultMap="ItemResult">
+        SELECT i.id as idi ,
+        i.nombre as nombrei ,
+        i.descripcion as desci ,
+        i.fechalanzamiento ,
+        i.tarifaxdia ,
+        i.formatorenta ,
+        i.genero ,
+        ti.id as idti ,
+        ti.descripcion as descti
+        FROM VI_ITEMS as i LEFT JOIN VI_TIPOITEM ti ON (i.TIPOITEM_id=ti.id)
+        LEFT JOIN VI_ITEMRENTADO ir ON (ir.ITEMS_id = i.id)
+        WHERE ir.CLIENTES_documento = #{documento} AND (CURDATE() &gt; ir.fechafinrenta OR (CURDATE() &gt;= ir.fechainiciorenta AND CURDATE() &lt;= ir.fechafinrenta))
     </select>
     
     <update parameterType="map" id="cambiarTarifaItem">
-    	UPDATE VI_ITEMS
-    	SET tarifaxdia = #{tarifa}
-    	WHERE id = #{idit}
+        UPDATE VI_ITEMS
+        SET tarifaxdia = #{tarifa}
+        WHERE id = #{idit}
     </update>
     
     <resultMap type='Item' id='ItemResult'>
-		<id property='id' column='idi'/>		
-		<result property='nombre' column='nombrei'/>
-		<result property='descripcion' column='desci'/>
-		<result property='fechaLanzamiento' column='fechaLanzamiento'/>
-		<result property='tarifaxDia' column='tarifaxDia'/>
-		<result property='formatoRenta' column='formatoRenta'/>
-		<result property='genero' column='genero'/>
-		<association property='tipo' resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'/>
-	</resultMap>
+        <id property='id' column='idi'/>		
+        <result property='nombre' column='nombrei'/>
+        <result property='descripcion' column='desci'/>
+        <result property='fechaLanzamiento' column='fechaLanzamiento'/>
+        <result property='tarifaxDia' column='tarifaxdia'/>
+        <result property='formatoRenta' column='formatoRenta'/>
+        <result property='genero' column='genero'/>
+        <association property='tipo' javaType="TipoItem" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'/>
+    </resultMap>
 	
 </mapper>

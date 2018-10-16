@@ -21,7 +21,7 @@ import static org.quicktheories.generators.Generate.*;
 import static org.quicktheories.generators.SourceDSL.*;
 
 public class ServiciosAlquilerTest {
-
+    
     @Inject
     private SqlSession sqlSession;
 
@@ -41,9 +41,7 @@ public class ServiciosAlquilerTest {
             boolean r = true;
             try {
                 Cliente cliente = serviciosAlquiler.consultarCliente(documento);
-            } catch(ExcepcionServiciosAlquiler e) {
-                r = true;
-            } catch(IndexOutOfBoundsException e) {
+            } catch(ExcepcionServiciosAlquiler | IndexOutOfBoundsException e) {
                 r = true;
             }
             return r;

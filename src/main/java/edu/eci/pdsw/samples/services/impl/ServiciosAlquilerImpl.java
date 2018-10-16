@@ -41,7 +41,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
             item = this.consultarItem(itemId);
             valor = (int) item.getTarifaxDia();
         } catch (ExcepcionServiciosAlquiler e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return valor;
     }
@@ -56,7 +56,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
         try {
             return clienteDAO.load((int) docu);
         } catch (PersistenceException ex) {
-            throw new ExcepcionServiciosAlquiler("Error al consultar el cliente " + docu, ex);
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
     }
 
@@ -76,7 +76,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
         try {
             return itemDAO.load(id);
         } catch (PersistenceException ex) {
-            throw new ExcepcionServiciosAlquiler("Error al consultar el item " + id, ex);
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
     }
 
@@ -114,6 +114,24 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
     }
 
     @Override
+    public List<Item> consultarItemsNoRegresados(long documento) throws ExcepcionServiciosAlquiler {
+        try {
+            return itemDAO.loadItemsNoRegresados(documento);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
+    }
+    
+    @Override
+    public ItemRentado consultarItemRentado(int id) throws ExcepcionServiciosAlquiler {
+        try {
+            return itemRentadoDAO.load(id);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
     public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias) throws ExcepcionServiciosAlquiler {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -137,7 +155,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
         try {
             return (long) (valorTarifaAlquilerxDia(iditem) * numdias);
         } catch (PersistenceException ex) {
-            throw new ExcepcionServiciosAlquiler("Error al consultar el costo de alquiler del item " + iditem, ex);
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
     }
 
@@ -146,7 +164,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
         try {
             itemDAO.saveTarifaItem(id, tarifa);
         } catch (PersistenceException ex) {
-            throw new ExcepcionServiciosAlquiler("Error al actualizar la tarifa del item " + id, ex);
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
     }
 

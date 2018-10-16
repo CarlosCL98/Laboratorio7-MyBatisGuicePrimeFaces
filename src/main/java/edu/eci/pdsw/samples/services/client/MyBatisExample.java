@@ -19,7 +19,6 @@ package edu.eci.pdsw.samples.services.client;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.ibatis.io.Resources;
@@ -27,15 +26,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
-import edu.eci.pdsw.samples.entities.Cliente;
-import edu.eci.pdsw.samples.entities.Item;
-import edu.eci.pdsw.samples.entities.ItemRentado;
-import edu.eci.pdsw.samples.entities.TipoItem;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
@@ -75,7 +67,8 @@ public class MyBatisExample {
     public static void main(String args[]) throws SQLException {
 
         SqlSessionFactory sessionfact = getSqlSessionFactory();
-        SqlSession sqlss = sessionfact.openSession();
+        SqlSession sqlss;
+        sqlss = sessionfact.openSession();
 
         //Crear el mapper y usarlo.
         ClienteMapper cm = sqlss.getMapper(ClienteMapper.class);
@@ -134,7 +127,6 @@ public class MyBatisExample {
             //servicioAlquiler.vetarCliente(1023437828, true);
         } catch (ExcepcionServiciosAlquiler e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
         sqlss.commit();
         sqlss.close();

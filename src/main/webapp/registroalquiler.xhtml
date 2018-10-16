@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registro Alquileres</title>
+    </h:head>
+    <h:body>
+        <h1>Alquileres Cliente #{alquileresBean.documento}</h1>
+        <h:form id="alquileresForm">
+            <p:panel id="registrar_Tabla" header="Registrar alquiler" visible="true">
+                Código item
+                <p:inputText id="codigoItem" binding="#{codigoItem}"></p:inputText>
+                Número días del alquiler
+                <p:inputText id="numeroDias" binding="#{numeroDias}"></p:inputText>
+                <br></br>
+                <br></br>
+                <h:outputText id="valor" value="Este es el el valor del alquiler: #{alquileresBean.valor} para #{alquileresBean.documento}"/>
+                <br></br>
+                <p:commandButton value="Conocer valor" actionListener="#{alquileresBean.valorAlquiler(codigoItem.value,numeroDias.value)}"/>
+                <br></br>
+                <br></br>
+                <p:commandButton value="Registrar" actionListener="#{alquileresBean.registarAlquiler(codigoItem.value,numeroDias.value)}" action="registrocliente"/>   
+            </p:panel>
+            <br></br>
+        </h:form>
+        <p:dataTable id="items_table" var="item" value="#{alquileresBean.itemsNoRegresados()}">
+            <p:column headerText="Nombre">
+                <h:outputText value="#{item.nombre}" />
+            </p:column>
+            <p:column headerText="Descripcion">
+                <h:outputText value="#{item.descripcion}" />
+            </p:column>
+            <p:column headerText="TarifaxDia">
+                <h:outputText value="#{item.tarifaxDia}" />
+            </p:column>
+            <p:column headerText="FechaInicioRenta">
+                <h:outputText value="#{alquileresBean.getItemRentado(item.id).fechainiciorenta}" />
+            </p:column>
+            <p:column headerText="FechaFinRenta">
+                <h:outputText value="#{alquileresBean.getItemRentado(item.id).fechafinrenta}" />
+            </p:column>
+            <p:column headerText="Multa">
+                <h:outputText value="#{alquileresBean.multaAlquiler(item.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:body>
+</html>
+

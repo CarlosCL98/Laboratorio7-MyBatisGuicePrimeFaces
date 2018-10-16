@@ -22,4 +22,6 @@ public interface ItemMapper {
     
     @Transactional
     public void cambiarTarifaItem(@Param("idit") int id, @Param("tarifa") long tarifa);
+    
+    public List<Item> consultarItemsNoRegresados(@Param("documento") long documento);
 }

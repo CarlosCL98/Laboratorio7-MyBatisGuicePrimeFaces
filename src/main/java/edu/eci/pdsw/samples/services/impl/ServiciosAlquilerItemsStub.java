@@ -7,7 +7,6 @@ import edu.eci.pdsw.samples.entities.TipoItem;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -198,6 +197,16 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
         }
 
     }
+    
+    @Override
+    public List<Item> consultarItemsNoRegresados(long documento) throws ExcepcionServiciosAlquiler {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ItemRentado consultarItemRentado(int id) throws ExcepcionServiciosAlquiler {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     private void poblar() {
 
@@ -239,4 +248,5 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
         clientes.put(c2.getDocumento(), c2);
         clientes.put(c3.getDocumento(), c3);
     }
+    
 }
