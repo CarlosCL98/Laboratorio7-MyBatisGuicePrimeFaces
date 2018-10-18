@@ -23,10 +23,10 @@
                 <p:inputText id ="emailIngresado" binding="#{emailIngresado}"></p:inputText>
                 <br></br>
                 <br></br>
-                <p:commandButton id="registrar" update="clientsForm" value="Registrar" actionListener="#{clientesBean.registrarCliente(nombreIngresado.value,documentoIngresado.value,direccionIngresada.value,telefonoIngresado.value,emailIngresado.value)}"></p:commandButton>
+                <p:commandButton id="registrar" update="clientsForm" value="Registrar" actionListener="#{alquilerItemsBean.registrarCliente(nombreIngresado.value,documentoIngresado.value,direccionIngresada.value,telefonoIngresado.value,emailIngresado.value)}"></p:commandButton>
             </p:panel>
             <br></br>
-            <p:dataTable id="clients_table" var="client" value="#{clientesBean.getClientes()}">
+            <p:dataTable id="clients_table" var="client" value="#{alquilerItemsBean.getClientes()}">
                 <p:column headerText="Nombre">
                     <h:outputText value="#{client.nombre}" />
                 </p:column>
@@ -46,7 +46,9 @@
                     <h:outputText value="#{client.vetado}" />
                 </p:column>
                 <p:column headerText="Ver Alquileres">
-                    <p:button outcome="registroalquiler?documento=#{client.documento}" icon="ui-icon-search"/>
+                    <p:commandButton icon="ui-icon-search" actionListener="#{alquilerItemsBean.docCliente}" async="true" ajax="true" action="registroalquiler.xhtml">
+                        <f:attribute name="parameter" value="#{client.documento}"/>
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
         </h:form>   

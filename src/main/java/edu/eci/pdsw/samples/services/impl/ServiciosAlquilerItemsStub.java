@@ -39,7 +39,12 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
 
     @Override
     public int valorTarifaAlquilerxDia(int itemId) {
-        return 0;
+        Item i = null;
+        if (itemsDisponibles.containsKey(itemId)) {
+            i = itemsDisponibles.get(itemId);
+        }
+        int valor = (int) i.getTarifaxDia();
+        return valor;
     }
 
     @Override
@@ -131,6 +136,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
         return new LinkedList<>(tipositems.values());
     }
 
+    @Override
     public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias) throws ExcepcionServiciosAlquiler {
 
         LocalDate ld = ((java.sql.Date) date).toLocalDate();
@@ -159,7 +165,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
         }
 
     }
-
+    
     private Cliente consultarClienteConItem(int iditem) throws ExcepcionServiciosAlquiler {
         if (mapaPrestamosPorIdCliente.containsKey(iditem)) {
             long idcli = mapaPrestamosPorIdCliente.get(iditem);
