@@ -7,13 +7,9 @@ import java.util.Date;
 import org.quicktheories.core.Gen;
 import static org.quicktheories.generators.SourceDSL.*;
 
-/**
- *
- * @author carloscl
- */
 public class ItemGenerator {
 
-    public static Gen<Item> clientes() {
+    public static Gen<Item> items() {
         return ids().zip(tipos(), nombres(), fechasLanzamiento(), tarifasxdia(),
                 (id, tipo, nombre, fechaLanzamiento, tarifaxDia) -> new Item(tipo, id, nombre, "", fechaLanzamiento, tarifaxDia, "", ""));
     }
@@ -35,7 +31,7 @@ public class ItemGenerator {
     }
 
     private static Gen<Long> tarifasxdia() {
-        return longs().between(1000, 500000);
+        return longs().between(1000, 495000);
     }
 
 }

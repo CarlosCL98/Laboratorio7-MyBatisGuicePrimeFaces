@@ -4,12 +4,8 @@ import edu.eci.pdsw.samples.entities.TipoItem;
 import java.util.List;
 import org.mybatis.guice.transactional.Transactional;
 
-/**
- *
- * @author 2106913
- */
 public interface TipoItemMapper {
-
+    
     public List<TipoItem> getTiposItems();
 
     public TipoItem getTipoItem(int id);

@@ -7,14 +7,19 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.guice.transactional.Transactional;
 
-/**
- *
- * @author 2106913
- */
 public interface ClienteMapper {
-
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Cliente consultarCliente(@Param("idcli") int id);
-
+    
+    /**
+     * 
+     * @param cli 
+     */
     @Transactional
     public void insertarCliente(@Param("cliente") Cliente cli);
 
@@ -39,9 +44,20 @@ public interface ClienteMapper {
      * @return
      */
     public List<Cliente> consultarClientes();
-
+    
+    /**
+     * 
+     * @param idir
+     * @param idcli
+     * @return 
+     */
     public ItemRentado consultarItemRentado(@Param("idir") int idir, @Param("idcli") int idcli);
-
+    
+    /**
+     * 
+     * @param id
+     * @param estado 
+     */
     @Transactional
     public void vetarCliente(@Param("idcli") long id, @Param("estado") boolean estado);
 

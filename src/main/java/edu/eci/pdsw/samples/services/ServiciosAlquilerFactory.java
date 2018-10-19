@@ -8,8 +8,6 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISItemDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISItemRentadoDAO;
 import edu.eci.pdsw.samples.services.impl.ServiciosAlquilerImpl;
-import org.apache.ibatis.transaction.TransactionFactory;
-import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.XMLMyBatisModule;
 
 import java.util.Optional;

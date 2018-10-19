@@ -4,10 +4,7 @@ import edu.eci.pdsw.samples.entities.TipoItem;
 
 import org.quicktheories.core.Gen;
 import static org.quicktheories.generators.SourceDSL.*;
-/**
- *
- * @author carloscl
- */
+
 public class TipoItemGenerator {
     
     public static Gen<TipoItem> tiposItems(){

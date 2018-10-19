@@ -4,10 +4,7 @@ import edu.eci.pdsw.samples.entities.Cliente;
 
 import org.quicktheories.core.Gen;
 import static org.quicktheories.generators.SourceDSL.*;
-/**
- *
- * @author carloscl
- */
+
 public class ClienteGenerator {
     
     public static Gen<Cliente> clientes(){

@@ -5,10 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.guice.transactional.Transactional;
 
-/**
- *
- * @author 2106913
- */
 public interface ItemMapper {
 
     public List<Item> consultarItems();

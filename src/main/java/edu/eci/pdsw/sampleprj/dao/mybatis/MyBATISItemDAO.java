@@ -1,15 +1,10 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis;
 
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
 import edu.eci.pdsw.sampleprj.dao.ItemDAO;
 import org.apache.ibatis.exceptions.PersistenceException;
-import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.pdsw.samples.entities.Item;
-import edu.eci.pdsw.samples.entities.ItemRentado;
-import edu.eci.pdsw.samples.entities.TipoItem;
-import java.sql.SQLException;
 import java.util.List;
 
 public class MyBATISItemDAO implements ItemDAO {
