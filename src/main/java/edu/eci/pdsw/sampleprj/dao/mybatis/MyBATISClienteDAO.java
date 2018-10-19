@@ -17,7 +17,7 @@ public class MyBATISClienteDAO implements ClienteDAO {
     public void save(Cliente cli) throws PersistenceException {
         try {
             clienteMapper.insertarCliente(cli);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al registrar el cliente " + cli.toString(), e);
         }
     }
@@ -26,7 +26,7 @@ public class MyBATISClienteDAO implements ClienteDAO {
     public Cliente load(int id) throws PersistenceException {
         try {
             return clienteMapper.consultarCliente(id);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar el item " + id, e);
         }
     }
@@ -35,7 +35,7 @@ public class MyBATISClienteDAO implements ClienteDAO {
     public List<Cliente> load() throws PersistenceException {
         try {
             return clienteMapper.consultarClientes();
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar los clientes item", e);
         }
     }
@@ -44,7 +44,7 @@ public class MyBATISClienteDAO implements ClienteDAO {
     public void saveItemRentado(ItemRentado ir, long idcli) throws PersistenceException {
         try {
             clienteMapper.agregarItemRentadoACliente(idcli, ir.getItem().getId(), ir.getFechainiciorenta(), ir.getFechafinrenta());
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al agregar el item rentado al cliente", e);
         }
     }
@@ -53,7 +53,7 @@ public class MyBATISClienteDAO implements ClienteDAO {
     public void vetarCliente(long idcli, boolean estado) throws PersistenceException {
         try {
             clienteMapper.vetarCliente(idcli, estado);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al vetar al cliente " + idcli, e);
         }
     }

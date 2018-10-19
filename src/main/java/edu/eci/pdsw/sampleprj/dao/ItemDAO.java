@@ -14,7 +14,7 @@ public interface ItemDAO {
    
    public List<Item> load() throws PersistenceException;
 
-   public List<Item> LoadItemsDisponibles() throws PersistenceException;
+   public List<Item> loadItemsDisponibles() throws PersistenceException;
    
    public void saveTarifaItem(int id, long tarifa) throws PersistenceException;
    

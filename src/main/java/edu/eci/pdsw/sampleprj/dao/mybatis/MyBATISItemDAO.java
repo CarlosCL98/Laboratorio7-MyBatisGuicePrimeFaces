@@ -16,7 +16,7 @@ public class MyBATISItemDAO implements ItemDAO {
     public void save(Item it) throws PersistenceException {
         try {
             itemMapper.insertarItem(it);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al registrar el item " + it.toString(), e);
         }
     }
@@ -25,7 +25,7 @@ public class MyBATISItemDAO implements ItemDAO {
     public Item load(int id) throws PersistenceException {
         try {
             return itemMapper.consultarItem(id);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar el item " + id, e);
         }
     }
@@ -34,16 +34,16 @@ public class MyBATISItemDAO implements ItemDAO {
     public List<Item> load() throws PersistenceException {
         try {
             return itemMapper.consultarItems();
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar el items", e);
         }
     }
 
     @Override
-    public List<Item> LoadItemsDisponibles() {
+    public List<Item> loadItemsDisponibles() {
         try {
             return itemMapper.consultarItemsDisponibles();
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al consultar los items", e);
         }
     }
@@ -52,7 +52,7 @@ public class MyBATISItemDAO implements ItemDAO {
     public void saveTarifaItem(int id, long tarifa) throws PersistenceException {
         try {
             itemMapper.cambiarTarifaItem(id, tarifa);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (PersistenceException e) {
             throw new PersistenceException("Error al cambiar la tarifa del item" + id, e);
         }
     }

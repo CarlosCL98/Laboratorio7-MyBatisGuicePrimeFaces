@@ -82,7 +82,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
     @Override
     public List<Item> consultarItemsDisponibles() {
-        return itemDAO.LoadItemsDisponibles();
+        return itemDAO.loadItemsDisponibles();
     }
 
     @Override

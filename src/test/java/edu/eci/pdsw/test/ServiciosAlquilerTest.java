@@ -19,14 +19,18 @@ import static org.quicktheories.generators.SourceDSL.*;
 
 public class ServiciosAlquilerTest {
 
-    ServiciosAlquiler serviciosAlquiler;
+    private final ServiciosAlquiler serviciosAlquiler;
 
     public ServiciosAlquilerTest() {
         serviciosAlquiler = ServiciosAlquilerFactory.getInstance().getServiciosAlquilerTesting();
     }
-
+    
+    /**
+     * 
+     */
     @Before
     public void setUp() {
+        //Al inicio
     }
 
     @Test
@@ -35,7 +39,10 @@ public class ServiciosAlquilerTest {
             boolean r = true;
             try {
                 Cliente cliente = serviciosAlquiler.consultarCliente(documento);
-            } catch (ExcepcionServiciosAlquiler | IndexOutOfBoundsException e) {
+                if (cliente.getDocumento() == documento) {
+                    r = false;
+                }
+            } catch (ExcepcionServiciosAlquiler | IndexOutOfBoundsException | NullPointerException e) {
                 r = true;
             }
             return r;
