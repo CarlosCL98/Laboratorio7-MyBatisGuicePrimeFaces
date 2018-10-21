@@ -1,0 +1,6 @@
+Desarrollador 1 - Daniel Alberto Rosales Castro
+Desarrollador 2 - Carlos Andrés Medina Rivas
+
+GitHub: https://github.com/CarlosCL98/Laboratorio7-MyBatisGuicePrimeFaces.git
+
+Heroku: https://laboratorio7-mybatisguiceprime.herokuapp.com/faces/registrocliente.xhtml

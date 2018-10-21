@@ -59,6 +59,7 @@ public class ServiciosAlquilerTest {
                 c = Optional.of(serviciosAlquiler.consultarCliente(cliente.getDocumento()));
             } catch (ExcepcionServiciosAlquiler ex) {
                 System.out.println(ex.getMessage());
+                clienteRegistrado = false;
             }
             if (!c.isPresent()) {
                 clienteRegistrado = false;
@@ -77,6 +78,7 @@ public class ServiciosAlquilerTest {
                 i = Optional.of(serviciosAlquiler.consultarItem(item.getId()));
             } catch (ExcepcionServiciosAlquiler ex) {
                 System.out.println(ex.getMessage());
+                itemRegistrado = false;
             }
             if (!i.isPresent()) {
                 itemRegistrado = false;
@@ -102,6 +104,7 @@ public class ServiciosAlquilerTest {
                     }
                 } catch (ExcepcionServiciosAlquiler ex) {
                     System.out.println(ex.getMessage());
+                    itemsAlquilados = false;
                 }
                 return itemsAlquilados;
             });
@@ -125,6 +128,7 @@ public class ServiciosAlquilerTest {
                     }
                 } catch (ExcepcionServiciosAlquiler ex) {
                     System.out.println(ex.getMessage());
+                    cambioTarifa = false;
                 }
                 return cambioTarifa;
             });
@@ -145,6 +149,7 @@ public class ServiciosAlquilerTest {
                     }
                 } catch (ExcepcionServiciosAlquiler ex) {
                     System.out.println(ex.getMessage());
+                    estaVetado = false;
                 }
                 return estaVetado;
             });
