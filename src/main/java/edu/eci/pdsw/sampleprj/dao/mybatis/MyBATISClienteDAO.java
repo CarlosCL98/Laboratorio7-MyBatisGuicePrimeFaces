@@ -57,4 +57,13 @@ public class MyBATISClienteDAO implements ClienteDAO {
             throw new PersistenceException("Error al vetar al cliente " + idcli, e);
         }
     }
+
+    @Override
+    public void eliminarCliente(Cliente cliente) throws PersistenceException {
+        try {
+            clienteMapper.eliminarCliente(cliente);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al eliminar al cliente " + cliente.toString(), e);
+        }
+    }
 }

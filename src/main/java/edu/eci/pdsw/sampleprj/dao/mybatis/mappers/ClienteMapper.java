@@ -60,5 +60,9 @@ public interface ClienteMapper {
      */
     @Transactional
     public void vetarCliente(@Param("idcli") long id, @Param("estado") boolean estado);
+    
+    
+    @Transactional
+    public void eliminarCliente(@Param("cliente") Cliente cliente);
 
 }

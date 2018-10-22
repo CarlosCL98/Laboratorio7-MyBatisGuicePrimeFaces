@@ -19,4 +19,6 @@ public interface ItemDAO {
    public void saveTarifaItem(int id, long tarifa) throws PersistenceException;
    
    public List<Item> loadItemsNoRegresados(long documento) throws PersistenceException;
+   
+   public void eliminarItem(Item item) throws PersistenceException;
 }

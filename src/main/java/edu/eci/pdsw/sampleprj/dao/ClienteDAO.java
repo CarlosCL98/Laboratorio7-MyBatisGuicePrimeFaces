@@ -18,4 +18,6 @@ public interface ClienteDAO {
 	public List<Cliente> load() throws PersistenceException;
 	
 	public void vetarCliente(long idcli, boolean estado) throws PersistenceException;
+        
+        public void eliminarCliente(Cliente cliente) throws PersistenceException;
 }

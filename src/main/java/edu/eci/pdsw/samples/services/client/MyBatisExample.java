@@ -28,6 +28,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
+import edu.eci.pdsw.samples.entities.Cliente;
+import edu.eci.pdsw.samples.entities.Item;
+import edu.eci.pdsw.samples.entities.TipoItem;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
@@ -98,9 +101,9 @@ public class MyBatisExample {
         ServiciosAlquiler servicioAlquiler = servicioAlquilerFactory.getServiciosAlquiler();
         try {
             //Consutar Cliente
-            System.out.println(servicioAlquiler.consultarCliente(2133541));
+            System.out.println(servicioAlquiler.consultarCliente(1023437828));
             //Consultar Items Clientes
-            System.out.println(servicioAlquiler.consultarItemsCliente(2133541));
+            System.out.println(servicioAlquiler.consultarItemsCliente(1023437828));
             //consultar clientes
             System.out.println(servicioAlquiler.consultarClientes());
             //consultar Items

@@ -65,4 +65,13 @@ public class MyBATISItemDAO implements ItemDAO {
             throw new PersistenceException("Error al consultar los items no regresados", e);
         }
     }
+
+    @Override
+    public void eliminarItem(Item item) throws PersistenceException {
+        try {
+            itemMapper.eliminarItem(item);
+        } catch (PersistenceException e) {
+            throw new PersistenceException("Error al eliminar el item " + item.toString(), e);
+        }
+    }
 }

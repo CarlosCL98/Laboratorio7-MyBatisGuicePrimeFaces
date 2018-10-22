@@ -254,5 +254,20 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
         clientes.put(c2.getDocumento(), c2);
         clientes.put(c3.getDocumento(), c3);
     }
+
+    @Override
+    public void eliminarCliente(Cliente cliente) throws ExcepcionServiciosAlquiler {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminarItem(Item item) throws ExcepcionServiciosAlquiler {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminarAlquiler(Item item) throws ExcepcionServiciosAlquiler {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

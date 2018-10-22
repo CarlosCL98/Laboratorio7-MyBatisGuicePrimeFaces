@@ -12,6 +12,10 @@
         from VI_ITEMRENTADO as ir 
         where ir.ITEMS_id = #{idi}
     </select>
+    
+    <delete parameterType="map" id="eliminarAlquiler">
+        DELETE FROM VI_ITEMRENTADO WHERE ITEMS_id = #{item.id}
+    </delete>
 	
     <resultMap type='ItemRentado' id='ItemRentadoResult'>
         <id property='id' column='idir'/>		

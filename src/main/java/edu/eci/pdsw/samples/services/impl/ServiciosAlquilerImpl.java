@@ -173,7 +173,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
         try {
             itemDAO.save(i);
         } catch (PersistenceException ex) {
-            throw new ExcepcionServiciosAlquiler("Error al registrar el item " + i.getId(), ex);
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
     }
 
@@ -182,7 +182,36 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
         try {
             clienteDAO.vetarCliente(docu, estado);
         } catch (PersistenceException ex) {
-            throw new ExcepcionServiciosAlquiler("Error al vetar al cliente " + docu, ex);
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
         }
     }
+    
+    @Override
+    public void eliminarCliente(Cliente cliente) throws ExcepcionServiciosAlquiler {
+        try {
+            clienteDAO.eliminarCliente(cliente);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
+    }
+    
+    @Override
+    public void eliminarItem(Item item) throws ExcepcionServiciosAlquiler {
+        try {
+            itemDAO.eliminarItem(item);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
+    }
+    
+    @Override
+    public void eliminarAlquiler(Item item) throws ExcepcionServiciosAlquiler {
+        try {
+            itemRentadoDAO.eliminarAlquiler(item);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler(ex.getMessage(), ex);
+        }
+    }
+    
+    
 }

@@ -72,6 +72,10 @@
         WHERE id = #{idit}
     </update>
     
+    <delete parameterType="map" id="eliminarItem">
+        DELETE FROM VI_ITEMS WHERE id = #{item.id}
+    </delete>
+    
     <resultMap type='Item' id='ItemResult'>
         <id property='id' column='idi'/>		
         <result property='nombre' column='nombrei'/>

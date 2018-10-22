@@ -89,6 +89,10 @@
         SET vetado = #{estado}
         WHERE documento = #{idcli}
     </update>
+    
+    <delete parameterType="map" id="eliminarCliente">
+        DELETE FROM VI_CLIENTES WHERE documento = #{cliente.documento}
+    </delete>
 	
     <resultMap type='Cliente' id='ClienteResult'>
         <id property='documento' column='documento'/>
